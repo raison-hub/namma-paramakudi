@@ -301,7 +301,7 @@ export default function App() {
       if (searchQuery.trim()) params.search = searchQuery.trim();
 
       const res = await axios.get(`${API_BASE_URL}/api/listings`, { params });
-      let data = res.data;
+      let data = Array.isArray(res.data) ? res.data : [];
 
       if (userLocation) {
         data = data.map((item) => {
