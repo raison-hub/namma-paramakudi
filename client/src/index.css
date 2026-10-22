@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0b0f19 !important;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.22) 0px, transparent 40%),
+    radial-gradient(circle at 90% 25%, rgba(168, 85, 247, 0.18) 0px, transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.14) 0px, transparent 45%) !important;
+  background-attachment: fixed !important;
+  color: #f8fafc;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  scroll-behavior: smooth;
+}
+
+
+div[onClick], 
+article, 
+.card, 
+[class*="rounded-3xl"] {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease !important;
+}
+
+
+div[onClick]:hover,
+article:hover {
+  transform: translateY(-6px) scale(1.01) !important;
+  box-shadow: 0 20px 30px -10px rgba(99, 102, 241, 0.25), 0 0 15px 1px rgba(99, 102, 241, 0.15) !important;
+  border-color: rgba(129, 140, 248, 0.6) !important;
+}
+
+
+img {
+  transition: transform 0.4s ease-out !important;
+}
+
+div:hover > img,
+div[onClick]:hover img {
+  transform: scale(1.05) !important;
+}
+
+
+@keyframes liveGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.25); }
+}
+
+span:has(span.animate-ping),
+.badge-live {
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}

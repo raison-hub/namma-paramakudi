@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "short_name": "Namma PMK",
+  "name": "Namma Paramakudi - Hyperlocal Directory",
+  "description": "Hyperlocal town directory, bus timings, rentals, and emergency contacts for Paramakudi.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
