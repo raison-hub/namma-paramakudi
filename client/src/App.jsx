@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://namma-paramakudi-api.vercel.app';
+const API_BASE_URL = 'https://namma-paramakudi-api.vercel.app';
 import { 
   Search, 
   MapPin, 
