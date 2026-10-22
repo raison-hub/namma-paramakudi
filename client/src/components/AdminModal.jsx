@@ -75,8 +75,8 @@ export default function AdminModal({ isOpen, onClose, lang = 'en', onRefresh }) 
       setLoading(true);
       setErrorMsg('');
       const [noticesRes, listingsRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/admin/notices', authHeader).catch(() => ({ data: [] })),
-        axios.get('http://localhost:5000/api/listings').catch(() => ({ data: [] })),
+        axios.get('https://namma-paramakudi-api.vercel.app/api/admin/notices', authHeader).catch(() => ({ data: [] })),
+        axios.get('https://namma-paramakudi-api.vercel.app/api/listings').catch(() => ({ data: [] })),
       ]);
       setNotices(noticesRes.data || []);
       setListings(listingsRes.data || []);
@@ -115,7 +115,7 @@ export default function AdminModal({ isOpen, onClose, lang = 'en', onRefresh }) 
   const handleSaveListing = async (id) => {
     try {
       setLoading(true);
-      await axios.put(`http://localhost:5000/api/admin/listings/${id}`, editListingForm, authHeader);
+      await axios.put(`https://namma-paramakudi-api.vercel.app/api/admin/listings/${id}`, editListingForm, authHeader);
       setEditingListingId(null);
       fetchData();
       if (onRefresh) onRefresh();
@@ -130,7 +130,7 @@ export default function AdminModal({ isOpen, onClose, lang = 'en', onRefresh }) 
   const handleDeleteListing = async (id) => {
     if (!window.confirm('Delete this listing permanently?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/admin/listings/${id}`, authHeader);
+      await axios.delete(`https://namma-paramakudi-api.vercel.app/api/admin/listings/${id}`, authHeader);
       fetchData();
       if (onRefresh) onRefresh();
     } catch (err) {
@@ -142,7 +142,7 @@ export default function AdminModal({ isOpen, onClose, lang = 'en', onRefresh }) 
     e.preventDefault();
     try {
       setLoading(true);
-      await axios.post('http://localhost:5000/api/admin/notices', noticeForm, authHeader);
+      await axios.post('https://namma-paramakudi-api.vercel.app/api/admin/notices', noticeForm, authHeader);
       setIsAddingNotice(false);
       setNoticeForm({
         title: '',
@@ -165,7 +165,7 @@ export default function AdminModal({ isOpen, onClose, lang = 'en', onRefresh }) 
 
   const handleToggleNotice = async (id) => {
     try {
-      await axios.patch(`http://localhost:5000/api/admin/notices/${id}/toggle`, {}, authHeader);
+      await axios.patch(`https://namma-paramakudi-api.vercel.app/api/admin/notices/${id}/toggle`, {}, authHeader);
       fetchData();
       if (onRefresh) onRefresh();
     } catch (err) {
@@ -176,7 +176,7 @@ export default function AdminModal({ isOpen, onClose, lang = 'en', onRefresh }) 
   const handleDeleteNotice = async (id) => {
     if (!window.confirm('Delete this notice?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/admin/notices/${id}`, authHeader);
+      await axios.delete(`https://namma-paramakudi-api.vercel.app/api/admin/notices/${id}`, authHeader);
       fetchData();
       if (onRefresh) onRefresh();
     } catch (err) {

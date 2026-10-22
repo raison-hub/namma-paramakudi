@@ -46,28 +46,42 @@ mongoose
   .catch((err) => console.error('MongoDB connection error:', err));
 
 
+
 app.get('/api/listings', async (req, res) => {
   try {
     const { category, subArea, search } = req.query;
+
     let query = { isApproved: { $ne: false } };
 
-    if (category && category !== 'all') query.category = category;
-    if (subArea && subArea !== 'All Localities') query.subArea = subArea;
+    if (category && category !== 'all') {
+      query.category = category;
+    }
+
+    if (subArea && subArea !== 'All Localities') {
+      query.subArea = subArea;
+    }
 
     if (search && search.trim()) {
       query.$or = [
-        { title: { $regex: search.trim(),$options: 'i' } },
-        { extraDetails: { $regex: search.trim(),$options: 'i' } },
-        { subArea: { $regex: search.trim(),$options: 'i' } },
+        { title: { $regex: search.trim(), $options: 'i' } },
+        { extraDetails: { $regex: search.trim(), $options: 'i' } },
+        { subArea: { $regex: search.trim(), $options: 'i' } }
       ];
     }
 
     const listings = await Listing.find(query).sort({ createdAt: -1 });
+
     res.json(listings);
   } catch (err) {
-    res.status(500).json({ error: 'Server error while fetching listings' });
+    console.error('Listing fetch error:', err);
+
+    res.status(500).json({
+      error: 'Server error while fetching listings',
+      message: err.message
+    });
   }
 });
+
 
 
 app.post('/api/listings', async (req, res) => {

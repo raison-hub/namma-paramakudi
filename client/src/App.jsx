@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-const API_BASE = import.meta.env.VITE_API_URL || '';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://namma-paramakudi-api.vercel.app';
 import { 
   Search, 
   MapPin, 
@@ -300,7 +300,7 @@ export default function App() {
       if (selectedSubArea !== 'All Localities') params.subArea = selectedSubArea;
       if (searchQuery.trim()) params.search = searchQuery.trim();
 
-      const res = await axios.get('http://localhost:5000/api/listings', { params });
+      const res = await axios.get(`${API_BASE_URL}/api/listings`, { params });
       let data = res.data;
 
       if (userLocation) {
@@ -461,7 +461,7 @@ export default function App() {
 
     try {
       setIsSubmitting(true);
-      await axios.post('http://localhost:5000/api/listings', payload);
+      await axios.post(`${API_BASE_URL}/api/listings`, payload);
       setIsAddOpen(false);
       setImagePreviews([]);
       setFormData({

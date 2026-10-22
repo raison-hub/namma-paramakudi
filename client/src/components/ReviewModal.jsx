@@ -26,7 +26,7 @@ export default function ReviewModal({ isOpen, onClose, listing, lang = 'en', onR
     try {
       setSubmitting(true);
       setErrorMsg('');
-      const res = await axios.post(`http://localhost:5000/api/listings/${listing._id}/reviews`, {
+      const res = await axios.post(`https://namma-paramakudi-api.vercel.app/api/listings/${listing._id}/reviews`, {
         reviewerName: reviewerName.trim() || undefined,
         rating,
         comment: comment.trim(),

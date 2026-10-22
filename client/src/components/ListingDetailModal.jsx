@@ -71,7 +71,7 @@ export default function ListingDetailModal({ isOpen, onClose, listing, lang = 'e
     try {
       setIsDeleting(true);
       setAuthError('');
-      await axios.delete(`http://localhost:5000/api/listings/${listing._id}`, {
+      await axios.delete(`https://namma-paramakudi-api.vercel.app/api/listings/${listing._id}`, {
         headers: {
           'x-pin-or-key': key,
           'x-admin-key': key
@@ -146,7 +146,7 @@ export default function ListingDetailModal({ isOpen, onClose, listing, lang = 'e
       setAuthError('');
 
       await axios.put(
-        `http://localhost:5000/api/listings/${listing._id}`,
+        `https://namma-paramakudi-api.vercel.app/api/listings/${listing._id}`,
         {
           ...editForm,
           enteredPin: keyToSend,

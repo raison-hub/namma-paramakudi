@@ -55,7 +55,7 @@ export default function NoticeBoard({ lang = 'en' }) {
   useEffect(() => {
     const fetchNotices = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/notices');
+        const res = await axios.get(`${API_BASE_URL}/api/notices`);
         if (res.data && res.data.length > 0) {
           setNotices(res.data);
         }

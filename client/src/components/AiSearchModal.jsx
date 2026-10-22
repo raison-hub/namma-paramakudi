@@ -24,7 +24,7 @@ export default function AiSearchModal({ isOpen, onClose }) {
     setLoading(true);
     setResponse('');
     try {
-      const res = await axios.post('http://localhost:5000/api/ai-search', { prompt: query });
+      const res = await axios.post('https://namma-paramakudi-api.vercel.app/api/ai-search', { prompt: query });
       setResponse(res.data.answer);
     } catch (err) {
       setResponse('Sorry, unable to get an answer right now. Please verify your backend server.');

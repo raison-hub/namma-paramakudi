@@ -221,7 +221,7 @@ export default function AddListingModal({ isOpen, onClose, lang = 'en', onListin
 
     try {
       setSubmitting(true);
-      await axios.post('http://localhost:5000/api/listings', payload);
+      await axios.post('https://namma-paramakudi-api.vercel.app/api/listings', payload);
       if (onListingAdded) onListingAdded();
       onClose();
     } catch (err) {
